@@ -1,0 +1,104 @@
+body{
+	background:lightgreen;
+}
+#top{
+    background: antiquewhite;
+    text-align: end;
+    font-size: 1vw;
+    padding: 0.3vw;
+}
+#head{
+    border: aqua;
+    border-width: 1500px;
+    text-align: center;
+    background: url("photos/8.jpg");
+    background-size: 100%;
+ }
+
+#navbar {
+    background: url(photos/11.jpg);
+    background-size: 100%;
+
+}
+#navbar
+    a:link,a:visited {
+        color: black;
+        padding: 14px 25px;
+        text-decoration: none;
+        display: inline-block;
+    }
+#navbar
+    a:hover{
+        background-color: aquamarine;
+        color: black;
+        padding: 14px 25px;
+        display: inline-block;
+    }
+
+#new{
+    font-size: larger;
+    font-style: italic;
+    font-family: fantasy;
+}
+#leftPan{
+    width:10vw;
+    height: 30vw;
+    float:left;
+    background:antiquewhite;
+    color:black;
+    padding: 2vw 2vw;
+}
+#leftPan
+    a:link,a:visited{
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding: 2px 1px 1px 20px;
+}
+#leftPan
+    a:hover{
+        background-color: coral;
+        display: block;
+        color: black;
+        padding: 2px 1px 1px 20px;
+}
+#rightPan{
+    float: right;
+    width:10vw;
+    height: 30vw;
+    background:antiquewhite;
+    color:black;
+    padding: 2vw 2vw;
+}
+#rightPan
+a:link,a:visited{
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 2px 1px 1px 20px;
+}
+#rightPan
+a:hover{
+    color: black;
+    background-color:coral;
+    display: block;
+    padding: 2px 1px 1px 20px;
+}
+#middlePan{
+    border:solid black 2px;
+	width:25%;
+	border-radius:5px;
+	margin:10px auto;
+	background:white;
+	padding:50px;
+}
+#btn{
+	color:#fff;
+	background:#337ab7;
+	padding:5px;
+	margin-left:60%;
+}
+#middlePan
+    a:link{
+        text-decoration: none;
+}

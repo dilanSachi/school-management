@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="assets/stylesMsgs.css" media="screen" />
+    <meta charset="UTF-8">
+    <title>ABC School</title>
+</head>
+<body>
+
+<p id="top">Logged in as <%=student %> (student)</p>
+
+<div id="head">
+    <header><img src="assets/photos/9.jpeg" alt="School Image" height="150vw"><img src="assets/photos/10.jpg" alt="School"height="150vw"></header>
+</div>
+<nav id="navbar">
+    <a href="classes.html">Classes</a> <a href="classes.html">Timetable</a> <a href="classes.html">Exams</a> <a href="classes.html">Notifications</a> <a href="msgs.html">Messages</a>
+</nav>
+<div id="mainPan">
+    <div id="leftPan">
+        <br>
+        <a href="#">About Us</a>
+        <br>
+        <br>
+        <a href="#">Services</a>
+        <br>
+        <br>
+        <a href="#">University</a>
+        <br>
+        <br>
+        <a href="#">Books</a>
+        <br>
+        <br>
+        <a href="#">Discount</a>
+        <br>
+        <br>
+        <a href="#">Releases</a>
+        <br>
+        <br>
+    </div>
+    <div id="rightPan">
+        <br>
+        <a href="#">News</a>
+        <br>
+        <br>
+        <a href="#">Blah</a>
+        <br>
+        <br>
+        <a href="#">University</a>
+        <br>
+        <br>
+        <a href="#">Discount</a>
+        <br>
+        <br>
+        <a href="#">Blah</a>
+        <br>
+        <br>
+        <a href="#">Releases</a>
+        <br>
+        <br>
+    </div>
+    <form id="middlePan">
+        <button id="li" onclick="return false" onmousedown="change()">Default Messages</button>
+    </form>
+    <script type="text/javascript">
+        function change(){
+            var request;
+            if (window.XMLHttpRequest) {
+                request = new XMLHttpRequest();
+            }
+            else {
+                request = new ActiveXObject( Microsoft.XMLHTTP);
+            }
+            request.open("GET", "new.html");
+            request.onreadystatechange = function () {
+                if (request.status === 200 && request.readyState === 4){
+                    var modify = document.getElementById("li");
+                    modify.innerHTML = request.responseText;
+                }
+            };
+            request.send();
+        }
+    </script>
+</div>
+</body>
+</html>
