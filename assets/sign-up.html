@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="stylesSignUp.css" media="screen" />
+    <meta charset="UTF-8">
+    <title>ABC School</title>
+</head>
+<body>
+    <p id="top">Logged in as administrator.</p>
+    <div id="head">
+    <header><img src="photos/9.jpeg" alt="School Image" height="150vw"><img src="photos/10.jpg" alt="School"height="150vw"></header>
+    </div>
+    <nav id="navbar">
+        <a href="classes.html">Classes</a> <a href="classes.html">Timetable</a> <a href="classes.html">Exams</a> <a href="classes.html">Notifications</a> <a href="msgs.html">Messages</a>
+    </nav>
+    <div id="mainPan">
+        <div id="leftPan">
+            <br>
+            <a href="#">About Us</a>
+            <br>
+            <br>
+            <a href="#">Services</a>
+            <br>
+            <br>
+            <a href="#">University</a>
+            <br>
+            <br>
+            <a href="#">Books</a>
+            <br>
+            <br>
+            <a href="#">Discount</a>
+            <br>
+            <br>
+            <a href="#">Releases</a>
+            <br>
+            <br>
+        </div>
+        <div id="rightPan">
+            <br>
+            <a href="#">News</a>
+            <br>
+            <br>
+            <a href="#">Blah</a>
+            <br>
+            <br>
+            <a href="#">University</a>
+            <br>
+            <br>
+            <a href="#">Discount</a>
+            <br>
+            <br>
+            <a href="#">Blah</a>
+            <br>
+            <br>
+            <a href="#">Releases</a>
+            <br>
+            <br>
+        </div>
+        <form id="middlePan" action="/sign-up" onsubmit="return checkErrors()" method="POST">
+            <br>
+            <h2>Sign Up</h2>
+            <p>
+                <label>First Name :</label>
+                <input type="text" id="firstName" name="firstName"/>
+            </p>
+            <p>
+                <label>Last Name :</label>
+                <input type="text" id="lastName" name="lastName"/>
+            </p>
+            <p>
+                <label>Age :</label>
+                <input type="number" id="age" name="age"/>
+            </p>
+            <p>
+                <label>User Type :</label>
+                <input type="radio" name="userType" value="1"> Admin
+                <input type="radio" name="userType" value="2"> Student
+                <input type="radio" name="userType" value="3"> Teacher<br>
+            </p>
+			<p>
+                <label>Username :</label>
+                <input type="text" id="username" name="username"/>
+			</p>
+			<p>
+                <label>Password :</label>
+                <input type="password" id="passwordI" name="passwordI" >
+			</p>
+            <p>
+                <label>Enter Password again :</label>
+                <input type="password" id="passwordII" name="passwordII" >
+            </p>
+			<p>
+			    <input type="submit" id="btn" name="login">
+			</p>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+	function checkErrors(){
+		if(checkPassword() && checkEmpty()){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	function checkPassword(){
+		//var passI=document.getElementById("passwordI");
+		//var passII=document.getElementById("passwordII");
+		if(passwordI.value==passwordII.value){
+			return true;
+		}
+		else{
+			alert("Error\nUnmatching passwords");
+			//warn();
+			return false;
+		}
+	}
+	function checkEmpty(){
+		if(firstName.value=="" || lastName.value=="" || age.value=="" || username.value=="" || passwordI.value=="" || passwordII.value==""){
+			alert("Error\nEmpty Fields");
+			return false;
+		}else{
+			return true;
+		}
+	}
+</script>		
