@@ -1,0 +1,13 @@
+<%#views/leave-application.ejs%>
+<% extend('layout') %>
+
+<form ref='uploadForm' id='uploadForm' action='/teacher/circulars/upload'
+      method='POST' encType="multipart/form-data" class="circular">
+        <input type="file" name="sampleFile" class="upload"/>
+      </br>
+      </br>
+        <input type="number" name="grade" value="Grade"/>
+      </br>
+      </br>
+        <input type='submit' value='Upload' />
+    </form>
