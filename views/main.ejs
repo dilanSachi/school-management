@@ -1,0 +1,4 @@
+<%#views/main.ejs%>
+<% extend('layout') %>
+
+<button type="button" class="btn btn-dark btn-lg"><a href="<%if(user.designation=='Teacher'){%>/teacher<%}else{%>/principal<%}%>">Control Panel</button>

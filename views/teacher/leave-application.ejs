@@ -1,0 +1,35 @@
+<%#views/teacher/leave-application.ejs%>
+<% extend('../layout') %>
+
+<form ref='uploadForm' id='uploadForm' action='/teacher/leaveApp'
+      method='POST' encType="multipart/form-data" class="circular">
+      <label>Name : </label>
+      <input type="text" name="teacherName"/>
+      </br>
+      </br>
+      <label>Designation : </label>
+      <input type="text" name="designation"/>
+      </br>
+      </br>
+      <label>Number of Leave Days : </label>
+      <input type="text" name="noOfLeaveDays"/>
+      </br>
+      </br>
+      <label>Leaves Taken : </label>
+      <input type="text" name="leavesTaken"/>
+      </br>
+      </br>
+      <label>Date of Commencing Leave : </label>
+      <input type="text" name="dateOfCommencingLeave"/>
+      </br>
+      </br>
+      <label>Date of Resuming Duties : </label>
+      <input type="text" name="dataOfResumingDuty"/>
+      </br>
+      </br>
+      <label>Reason : </label>
+      <input type='text' name='reason' />
+      </br>
+      </br>
+      <input type='submit' value="Submit" />
+    </form>

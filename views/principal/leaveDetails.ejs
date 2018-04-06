@@ -1,0 +1,88 @@
+<%#views/principal/leaveDetails.ejs%>
+<% extend('../layout') %>
+
+<form id='uploadForm' class="circular" >
+      <label>Name : <%=details.teacherName%></label>
+      </br>
+      </br>
+      <label>Designation : <%=details.designation%></label>
+      </br>
+      </br>
+      <label>Number of Leave Days : <%=details.noOfLeaveDays%></label>
+      </br>
+      </br>
+      <label>Leaves Taken : <%=details.leavesTaken%></label>
+      </br>
+      </br>
+      <label>Date of Commencing Leave : <%=details.dateOfCommencingLeave%></label>
+      </br>
+      </br>
+      <label>Date of Resuming Duties : <%=details.dataOfResumingLeave%></label>
+      </br>
+      </br>
+      <label>Reason : <%=details.reason%></label>
+      </br>
+      </br>
+      <div id="changeable">
+        <input type='button' value="Approve" id="Approve" class="btn <%=details._id%>"/>
+        <input type='button' value="Disapprove" id="Disapprove" class="btn <%=details._id%>"/>
+      </div>
+</form>
+
+
+
+<script>
+  $(document).ready(function(){
+    $('.btn').on('click',function(){
+      //alert(this.className.slice(4));
+      var id=this.className.slice(4);
+      $.ajax({
+        type:'POST',
+        url:'/principal/leave/approval/'+id,
+        data:{approval:this.id},
+        success:function(data){
+          alert(data.approval);
+          var cat='<h1>Approved</h1></br><li class="list-group-item"><a href="/principal/leaveApps">Go Back</a></li>';
+          var dog='<h1>Disapproved</h1></br><li class="list-group-item"><a href="/principal/leaveApps">Go Back</a></li>';
+          if(data.approval){
+            $('#changeable').html(cat);
+          }else{
+            $('#changeable').html(dog);
+          }
+        }
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+<!--
+<form ref='uploadForm' id='uploadForm' class="circular" method='POST' action='/principal/leave/approval/<%=details._id%>'>
+      <label>Name : <%=details.teacherName%></label>
+      </br>
+      </br>
+      <label>Designation : <%=details.designation%></label>
+      </br>
+      </br>
+      <label>Number of Leave Days : <%=details.noOfLeaveDays%></label>
+      </br>
+      </br>
+      <label>Leaves Taken : <%=details.leavesTaken%></label>
+      </br>
+      </br>
+      <label>Date of Commencing Leave : <%=details.dateOfCommencingLeave%></label>
+      </br>
+      </br>
+      <label>Date of Resuming Duties : <%=details.dataOfResumingLeave%></label>
+      </br>
+      </br>
+      <label>Reason : <%=details.reason%></label>
+      </br>
+      </br>
+      <input type='submit' value="Approve" name="approve"/>
+      <input type='submit' value="Disapprove" name="disapprove"/>
+</form>-->

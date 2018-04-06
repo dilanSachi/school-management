@@ -1,0 +1,27 @@
+<%#views/principal/schemes.ejs%>
+<% extend('../layout') %>
+
+<div id="changeThis">
+  <h3>Im Dinga</h3>
+  </br>
+  <p>What Up Brother</p>
+  <button class="btn btn-dark">Click</button>
+
+</div>
+
+
+<script>
+
+$(document).ready(function(){
+  $('.btn').on('click',function(){
+    $.ajax({
+      type:'get',
+      url:'/principal/getSchemes',
+      success:function(data){
+        $('#changeThis').html(data);
+      }
+    });
+  });
+});
+
+</script>
