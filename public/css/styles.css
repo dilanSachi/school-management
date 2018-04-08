@@ -34,32 +34,11 @@ header li{
   font-size: 50px;
   color: #FF4500;
 }
-#leftPan{
-  text-align: center;
-  font-size: 15px;
-  background-color: #35424a;
-  width: 15%;
-  height: 500px;
-  float: left;
-  display: inline-block;
-  padding: 0;
-  margin: 0;
+.midpan{
+  margin: auto;
+  width: 70%;
+  padding: 10px;
 }
-#leftPan a:hover{
-  color: #FFD700;
-  font-size: 16px;
-  text-decoration: none;
-}
-#leftPan a{
-  text-decoration: none;
-  color: #ffffff;
-}
-#leftPan li{
-  list-style-type: none;
-  padding: 19px;
-  text-transform: uppercase;
-}
-
 .container{
   background-color: #35424a;
 }
@@ -116,4 +95,7 @@ header li{
 	  border-top-left-radius: 0;
 	  border-top-right-radius: 0;
 	}
+}
+a{
+  text-decoration: none;
 }

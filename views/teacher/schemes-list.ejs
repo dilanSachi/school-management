@@ -1,0 +1,37 @@
+<%#views/teacher/schemes-list.ejs%>
+<% extend('../layout') %>
+
+<div class="form-group">
+  <div>
+  <%for(var i=0;i<data.length;i++){%>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Filename : <%=data[i].fileName%></li>
+      <li class="list-group-item">Year : <%=data[i].year%></li>
+      <li class="list-group-item">Grade : <%=data[i].grade%></li>
+    </ul>
+    <div class="input-group-append">
+      <a class="btn1 input-group-text" href="/teacher/scheme/<%=i%>">Edit</a>
+      <a class="input-group-text delete" id="<%=data[i]._id%>" href="#">Delete</a>
+      <a class="input-group-text" href="/uploads/schemes/<%=data[i].fileName%>" download>Download</a>
+    </div>
+  <%}%>
+</div>
+  <div class="input-group-append">
+    <a  class="input-group-text" href="/teacher/schemes">Go Back</a>
+  </div>
+</div>
+<script>
+
+  $(document).ready(function(){
+    $('.delete').on('click',function(){
+      $.ajax({
+        type:'GET',
+        url:'/teacher/schemes/delete/'+this.id,
+        success:function(){
+          location.reload();
+        }
+      });
+    });
+  });
+
+</script>
