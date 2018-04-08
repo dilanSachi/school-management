@@ -7,8 +7,11 @@ const expressValidator=require('express-validator');
 const session=require('express-session');
 const passport=require('passport');
 const bcrypt=require('bcryptjs');
+const fileupload=require('express-fileupload');
 
 var app=express();
+
+app.use(fileupload());
 
 //connect to database
 mongoose.connect(config.database);
@@ -76,10 +79,10 @@ app.get('/main',ensureAuthenticated,function(req,res){
 });
 
 //routing the requests
-var principal=require('./routes/principal');
+var principal=require(__dirname+'/routes/principal');
 app.use('/principal',principal);
 
-var teacher=require('./routes/teacher');
+var teacher=require(__dirname+'/routes/teacher');
 app.use('/teacher',teacher);
 
 //create server
