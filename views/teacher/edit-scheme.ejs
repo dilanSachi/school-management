@@ -1,0 +1,27 @@
+<%#views/teacher/schemes-upload.ejs%>
+<% extend('../layout') %>
+
+<form method="post" action="/teacher/schemes/edit-data/<%=data.fileName%>" encType="multipart/form-data">
+
+      <div class="input-group">
+        <div class="custom-file">
+          <input type="file" required="true" class="custom-file-input" id="inputGroupFile04" name="sampleFile">
+          <label class="custom-file-label" for="inputGroupFile04"><%=data.fileName%></label>
+        </div>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Upload</button>
+        </div>
+      </div>
+
+    <div class="form-group">
+        <label for="formGroupExampleInput">Year</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="<%=data.year%>" required="true" name="year">
+        <label for="formGroupExampleInput2">Grade</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="<%=data.grade%>" required="true" name="grade">
+    </div>
+    <div class="input-group-append">
+      <input type="submit" class="input-group-text" value="Save"/>
+      <a class="input-group-text" href="/teacher/schemes"/>Cancel</a>
+    </div>
+    </br>
+</form>
