@@ -6,24 +6,61 @@ var fs=require('fs');
 
 var leaveData=require('../models/teacher-leaves');
 var schemeData=require('../models/data-schemes');
+var circularData=require('../models/data-circular');
 
 router.get('/',ensureAuthenticated,function(req,res){
   res.render('teacher/teacher');
+});
+
+//circulars...................................................................
+
+router.get('/circulars',ensureAuthenticated,function(req,res){
+  circularData.find({grade:res.locals.user.grade},function(err,data){
+    if(err){
+      console.log(err);
+    }else{
+      res.render('teacher/circulars',{data:data});
+    }
+  });
+});
+
+
+//leave app...................................................................
+
+router.get('/leaveMenu',ensureAuthenticated,function(req,res){
+  leaveData.find({teacherName:res.locals.user.name},function(err,data){
+    if(err){
+      console.log(err);
+    }else{
+      res.render('teacher/leaveMenu',{data:data});
+    }
+  });
+});
+
+router.delete('/leaveApp/delete/:id',function(req,res){
+  leaveData.findOneAndRemove({_id:req.params.id},function(err,data){
+    if(err){
+      console.log(err);
+    }else{
+      res.send('success');
+    }
+  });
 });
 
 router.get('/applyLeave',ensureAuthenticated,function(req,res){
   res.render('teacher/leave-application');
 });
 
-router.post('/leaveApp',ensureAuthenticated,function(req,res){
+router.post('/processLeaveApp',ensureAuthenticated,function(req,res){
   var leavedata=new leaveData();
   leavedata.teacherName=req.body.teacherName;
   leavedata.designation=req.body.designation;
   leavedata.noOfLeaveDays=req.body.noOfLeaveDays;
   leavedata.leavesTaken=req.body.leavesTaken;
   leavedata.dateOfCommencingLeave=req.body.dateOfCommencingLeave;
-  leavedata.dataOfResumingLeave=req.body.dataOfResumingDuty;
+  leavedata.dateOfResumingLeave=req.body.dateOfResumingDuty;
   leavedata.reason=req.body.reason;
+  leavedata.approved="Not Yet Decided";
   leavedata.save(function(err){
     if(err){
       console.log(err);
@@ -32,6 +69,8 @@ router.post('/leaveApp',ensureAuthenticated,function(req,res){
     }
   });
 });
+
+//schemes...................................................................
 
 router.get('/schemes',ensureAuthenticated,function(req,res){
   res.render('teacher/schemes-teacher');
@@ -153,7 +192,7 @@ router.post('/schemes/edit-data/:fname',ensureAuthenticated,function(req,res){
   });
 });
 
-router.get('/schemes/delete/:id',function(req,res){
+router.delete('/schemes/delete/:id',function(req,res){
   schemeData.findOneAndRemove({_id:req.params.id},function(err,data){
     var fpath=path.join(__dirname,'../public/uploads/schemes/'+data.fileName);
     fs.unlink(fpath,function(errr){

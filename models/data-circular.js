@@ -5,10 +5,6 @@ var dataSchema=mongoose.Schema({
     type:String,
     required:true
   },
-  author:{
-    type:String,
-    required:true
-  },
   grade:{
     type:Number,
     required:true

@@ -1,0 +1,20 @@
+<%#views/principal/circularsUpload.ejs%>
+<% extend('../layout') %>
+
+  <div class="form-group">
+  <form ref='uploadForm' id='uploadForm' action='/principal/circulars/upload'
+        method='POST' encType="multipart/form-data" class="circular">
+          <input type="file" name="sampleFile" class="upload"/>
+        </br>
+        </br>
+        <label>Grade : </label>
+          <input type="number" name="grade" value="Grade"/>
+        </br>
+        </br>
+          <input type='submit' value='Upload' />
+      </form>
+
+      <div class="input-group-append">
+        <a  class="input-group-text" href="/principal/circulars">Go Back</a>
+      </div>
+      </div>

@@ -1,6 +1,47 @@
 <%#views/principal/schemes.ejs%>
 <% extend('../layout') %>
 
+<div class="form-group">
+  <div>
+  <%for(var i=0;i<data.length;i++){%>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Filename : <%=data[i].fileName%></li>
+      <li class="list-group-item">Year : <%=data[i].year%></li>
+      <li class="list-group-item">Grade : <%=data[i].grade%></li>
+      <li class="list-group-item">Author : <%=data[i].author%></li>
+    </ul>
+    <div class="input-group-append">
+      <a class="input-group-text delete delete" id="<%=data[i]._id%>" href="#">Delete</a>
+      <a class="input-group-text" href="/uploads/schemes/<%=data[i].fileName%>" download>Download</a>
+    </div>
+  <%}%>
+</div>
+  <div class="input-group-append">
+    <a  class="input-group-text" href="/principal/">Go Back</a>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('.delete').on('click',function(){
+    alert(this.id);
+    $.ajax({
+      type:'DELETE',
+      url:'/principal/schemes/delete/'+this.id,
+      success:function(data){
+        location.reload();
+      }
+    });
+  });
+});
+</script>
+
+
+
+
+
+
+
 <div id="changeThis">
   <h3>Im Dinga</h3>
   </br>
