@@ -1,0 +1,19 @@
+<%#views/teacher/circulars.ejs%>
+<% extend('../layout') %>
+
+<div class="form-group">
+  <div>
+  <%for(var i=0;i<data.length;i++){%>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Filename : <%=data[i].fileName%></li>
+      <li class="list-group-item">Grade : <%=data[i].grade%></li>
+    </ul>
+    <div class="input-group-append">
+      <a class="input-group-text" href="/uploads/circulars/<%=data[i].fileName%>" download>Download</a>
+    </div>
+  <%}%>
+</div>
+  <div class="input-group-append">
+    <a  class="input-group-text" href="/teacher/">Go Back</a>
+  </div>
+</div>

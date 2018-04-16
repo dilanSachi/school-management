@@ -1,0 +1,27 @@
+<%#views/teacher/leaveMenu.ejs%>
+<% extend('../layout') %>
+<div class="list-group">
+  <%for(var i=0;i<data.length;i++){%>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Leave Date : <%=data[i].dateOfCommencingLeave%></li>
+      <li class="list-group-item">Approval : <%=data[i].approved%></li>
+    </ul>
+    <a href="#" class="list-group-item list-group-item-action delete" id="<%=data[i]._id%>">Delete</a>
+  <%}%>
+  <a href="/teacher/applyLeave" class="list-group-item list-group-item-action">Apply New Leave</a>
+  <a href="/teacher" class="list-group-item list-group-item-action">Go Back</a>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('.delete').on('click',function(){
+      $.ajax({
+        type:'DELETE',
+        url:'/teacher/leaveApp/delete/'+this.id,
+        success:function(){
+          location.reload();
+        }
+      });
+    });
+  });
+</script>

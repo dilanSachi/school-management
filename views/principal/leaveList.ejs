@@ -3,6 +3,10 @@
 
 <ul class="list-group">
   <%for(var i=0;i<data.length;i++){%>
-    <li class="list-group-item"><a href="/principal/leaveDetails/<%=data[i]._id%>"><%=data[i].teacherName%></a></li>
+    <li class="list-group-item"><a href="/principal/leaveDetails/<%=data[i]._id%>"><%=data[i].teacherName%>
+     <%=data[i].dateOfCommencingLeave%> to <%=data[i].dateOfResumingLeave%></a></li>
   <%}%>
 </ul>
+<div class="list-group">
+  <a href="/principal/" class="list-group-item list-group-item-action">Go Back</a>
+</div>

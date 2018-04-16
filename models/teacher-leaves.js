@@ -21,7 +21,7 @@ var dataSchema=mongoose.Schema({
     type:String,
     required:true
   },
-  dataOfResumingLeave:{
+  dateOfResumingLeave:{
     type:String,
     required:true
   },
@@ -30,8 +30,9 @@ var dataSchema=mongoose.Schema({
     required:true
   },
   approved:{
-    type:Boolean,
+    type:String,
+    required:true
   }
 });
 
-var leaveData=module.exports=mongoose.model('techerLeaveData',dataSchema);
+var leaveData=module.exports=mongoose.model('teacherLeaveData',dataSchema);

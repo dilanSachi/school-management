@@ -20,6 +20,10 @@ const userSchema=mongoose.Schema({
   password:{
     type:String,
     required:true
+  },
+  grade:{
+    type:Number,
+    required:false
   }
 });
 
