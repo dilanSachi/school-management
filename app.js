@@ -60,22 +60,16 @@ app.get('/',function(req,res){
   res.render('login');
 });
 
-app.post('/user/login',function(req,res,next){
-  //passport.authenticate('local',{failureRedirect:'/'},
-  passport.authenticate('local',{
+app.post('/user/login',passport.authenticate('local'),function(req,res,next){
+/*  passport.authenticate('local',{
     successRedirect:'/main',
     failureRedirect:'/'
-  })(req,res,next);
-    /*  if(res.locals.user.designation=='teacher'){
+  })(req,res,next);*/
+      if(req.user.designation=='Teacher'){
         res.redirect('/teacher');
-      }else if(res.locals.user.designation=='Principal'){
+      }else if(req.user.designation=='Principal'){
         res.redirect('/principal');
       }
-//  )(req,res,next);*/
-});
-
-app.get('/main',ensureAuthenticated,function(req,res){
-  res.render('main');
 });
 
 //routing the requests
