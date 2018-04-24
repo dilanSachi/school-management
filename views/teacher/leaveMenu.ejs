@@ -6,10 +6,14 @@
       <li class="list-group-item">Leave Date : <%=data[i].dateOfCommencingLeave%></li>
       <li class="list-group-item">Approval : <%=data[i].approved%></li>
     </ul>
-    <a href="#" class="list-group-item list-group-item-action delete" id="<%=data[i]._id%>">Delete</a>
+    <div class="input-group-append">
+      <a href="#" class="btn1 input-group-text delete" id="<%=data[i]._id%>">Delete</a>
+      </div>
   <%}%>
-  <a href="/teacher/applyLeave" class="list-group-item list-group-item-action">Apply New Leave</a>
-  <a href="/teacher" class="list-group-item list-group-item-action">Go Back</a>
+  <div class="input-group-append">
+    <a class="btn1 input-group-text" href="/teacher/applyLeave">Apply New Leave</a>
+    <a href="/teacher" class="btn1 input-group-text">Go Back</a>
+  </div>
 </div>
 
 <script>

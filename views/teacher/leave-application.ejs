@@ -4,36 +4,38 @@
 <form ref='uploadForm' id='uploadForm' action='/teacher/processLeaveApp'
       method='POST' encType="multipart/form-data" class="circular">
       <label>Name : </label>
-      <input type="text" name="teacherName"/>
+      <input type="text" name="teacherName" required="true"/>
       </br>
       </br>
       <label>Designation : </label>
-      <input type="text" name="designation"/>
+      <input type="text" name="designation" required="true"/>
       </br>
       </br>
       <label>Number of Leave Days : </label>
-      <input type="text" name="noOfLeaveDays"/>
+      <input type="text" name="noOfLeaveDays" required="true"/>
       </br>
       </br>
       <label>Leaves Taken : </label>
-      <input type="text" name="leavesTaken"/>
+      <input type="text" name="leavesTaken" required="true"/>
       </br>
       </br>
       <label>Date of Commencing Leave : </label>
-      <input type="text" name="dateOfCommencingLeave"/>
+      <input type="text" name="dateOfCommencingLeave" required="true"/>
       </br>
       </br>
       <label>Date of Resuming Duties : </label>
-      <input type="text" name="dateOfResumingDuty"/>
+      <input type="text" name="dateOfResumingDuty" required="true"/>
       </br>
       </br>
       <label>Reason : </label>
-      <input type='text' name='reason' />
+      <input type='text' name='reason' required="true"/>
       </br>
       </br>
-      <input type='submit' value="Submit" />
+      <div class="input-group-append">
+        <input type='submit' value="Submit" class="input-group-text"/>
+      </div>
     </form>
 
     <div class="input-group-append">
-      <a  class="input-group-text" href="/teacher/leaveMenu">Go Back</a>
+      <a class="input-group-text" href="/teacher/leaveMenu">Go Back</a>
     </div>

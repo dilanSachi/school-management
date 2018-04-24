@@ -8,6 +8,7 @@ const session=require('express-session');
 const passport=require('passport');
 const bcrypt=require('bcryptjs');
 const fileupload=require('express-fileupload');
+const flash=require('connect-flash');
 
 var app=express();
 
@@ -41,7 +42,27 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.use(expressValidator());
+app.use(require('connect-flash')());
+app.use(function(req,res,next){
+  res.locals.messages=require('express-messages')(req,res);
+  next();
+});
+
+app.use(expressValidator({
+  errorFormatter:function(param,msg,value){
+    var namespace=param.split('.'),
+    root=namespace.shift(),
+    formParam=root;
+    while(namespace.length){
+      formParam+='['+namespace.shift()+']';
+    }
+    return{
+      param:formParam,
+      msg:msg,
+      value:value
+    };
+  }
+}));
 
 var userDB=require('./models/users');
 
