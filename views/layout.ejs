@@ -23,29 +23,44 @@
   <body>
 
     <header>
-      <div id="logbutton">
-      <a href="/principal/logout" class="btn btn-info btn-lg">
-      <span class="glyphicon glyphicon-log-out"></span> Log out</a>
+      <button type="button" class="btn btn-primary btn-rounded btn-sm" id="logbutton">
+        <a href="/principal/logout">Log out</a>
+      </button>
     </div>
-      <div class="container">
         <div id="branding">
           <h1><span class="highlight">NEXUS</span> School Management</h1>
         </div>
-        <nav>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="#">Contacts</a></li>
-            <li><a href="#">People</a></li>
-            <li><a href="#">Help</a></li>
-          </ul>
-        </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contacts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Messages</a>
+            </li>
+        </ul>
+      </div>
+</nav>
       </div>
     </header>
 
     <div class="midpan">
+      <%- messages('message', locals) %>
       <%- content %>
     </div>
 

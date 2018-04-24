@@ -37,11 +37,12 @@ router.get('/leaveMenu',ensureAuthenticated,function(req,res){
   });
 });
 
-router.delete('/leaveApp/delete/:id',function(req,res){
+router.delete('/leaveApp/delete/:id',ensureAuthenticated,function(req,res){
   leaveData.findOneAndRemove({_id:req.params.id},function(err,data){
     if(err){
       console.log(err);
     }else{
+      req.flash('success','Delete successfull');
       res.send('success');
     }
   });
@@ -52,22 +53,33 @@ router.get('/applyLeave',ensureAuthenticated,function(req,res){
 });
 
 router.post('/processLeaveApp',ensureAuthenticated,function(req,res){
-  var leavedata=new leaveData();
-  leavedata.teacherName=req.body.teacherName;
-  leavedata.designation=req.body.designation;
-  leavedata.noOfLeaveDays=req.body.noOfLeaveDays;
-  leavedata.leavesTaken=req.body.leavesTaken;
-  leavedata.dateOfCommencingLeave=req.body.dateOfCommencingLeave;
-  leavedata.dateOfResumingLeave=req.body.dateOfResumingDuty;
-  leavedata.reason=req.body.reason;
-  leavedata.approved="Not Yet Decided";
-  leavedata.save(function(err){
-    if(err){
-      console.log(err);
-    }else{
-      res.redirect('/teacher/');
-    }
-  });
+  req.checkBody('noOfLeaveDays','Enter correct date').isInt();
+  req.checkBody('leavesTaken','Enter correct date').isInt();
+  req.checkBody('dateOfCommencingLeave','Enter correct date').isInt();
+  req.checkBody('dateOfResumingDuty','Enter correct date').isInt();
+  let errors=req.validationErrors();
+  if(errors){
+    res.render('teacher/leave-application',{errors:errors});
+  }else{
+    var leavedata=new leaveData();
+    leavedata.teacherName=req.body.teacherName;
+    leavedata.designation=req.body.designation;
+    leavedata.noOfLeaveDays=req.body.noOfLeaveDays;
+    leavedata.leavesTaken=req.body.leavesTaken;
+    leavedata.dateOfCommencingLeave=req.body.dateOfCommencingLeave;
+    leavedata.dateOfResumingLeave=req.body.dateOfResumingDuty;
+    leavedata.reason=req.body.reason;
+    leavedata.approved="Not Yet Decided";
+    leavedata.save(function(err){
+      if(err){
+        console.log(err);
+      }else{
+        req.flash('success','Leave Request Sent');
+        res.redirect('/teacher/leaveMenu');
+      }
+    });
+  }
+
 });
 
 //schemes...................................................................
@@ -104,6 +116,7 @@ router.post('/schemes/upload',ensureAuthenticated,function(req,res){
                 if(err){
                   return res.status(500).send(err);
                 }else{
+                  req.flash('success','Schemes Uploaded');
                   res.redirect('/teacher/schemes');
                 }
               });
@@ -111,7 +124,7 @@ router.post('/schemes/upload',ensureAuthenticated,function(req,res){
           });
         }else{
           /////////////////////////////////////////////////////////////////////////////////////make code to send a message to front end
-          console.log('File already exists');
+          req.flash('success','File already exists');
           res.redirect('back');
         }
       }
@@ -163,6 +176,7 @@ router.post('/schemes/edit-data/:fname',ensureAuthenticated,function(req,res){
             if(err){
               return res.status(500).send(err);
             }else{
+              req.flash('success','Scheme Data saved successfully');
               res.redirect('/teacher/schemes');
             }
           });
@@ -181,24 +195,26 @@ router.post('/schemes/edit-data/:fname',ensureAuthenticated,function(req,res){
           if(err){
             return res.status(500).send(err);
           }else{
+            req.flash('success','Scheme Data saved successfully');
             res.redirect('/teacher/schemes');
           }
         });
       });
     }else{
-      console.log('Another file with this name already exists.');
+      req.flash('success','Another file with this name already exists.');
       res.redirect('back');
     }
   });
 });
 
-router.delete('/schemes/delete/:id',function(req,res){
+router.delete('/schemes/delete/:id',ensureAuthenticated,function(req,res){
   schemeData.findOneAndRemove({_id:req.params.id},function(err,data){
     var fpath=path.join(__dirname,'../public/uploads/schemes/'+data.fileName);
     fs.unlink(fpath,function(errr){
       if(errr){
         console.log(err);
       }else{
+        req.flash('success','Deleted Successfully');
         res.send('success');
       }
     });

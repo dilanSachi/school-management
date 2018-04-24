@@ -46,13 +46,14 @@ router.post('/circulars/upload',ensureAuthenticated,function(req,res){
                 if(err){
                   return res.status(500).send(err);
                 }else{
+                  req.flash('success','Circulars Uploaded');
                   res.redirect('/principal/circulars');
                 }
               });
             }
           });
         }else{
-          console.log('File already exists');
+          req.flash('success','File already exists');
           res.redirect(req.get('referer'));
         }
       }
@@ -76,6 +77,7 @@ router.delete('/circulars/delete/:id',function(req,res){
         if(errr){
           console.log(err);
         }else{
+          req.flash('success','Circulars Deleted');
           res.send('success');
         }
       });
@@ -138,6 +140,7 @@ router.delete('/schemes/delete/:id',function(req,res){
         if(errr){
           console.log(err);
         }else{
+          req.flash('danger','Schemes Deleted');
           res.send('success');
         }
       });

@@ -24,7 +24,6 @@
 <script>
 $(document).ready(function(){
   $('.delete').on('click',function(){
-    alert(this.id);
     $.ajax({
       type:'DELETE',
       url:'/principal/schemes/delete/'+this.id,
@@ -41,7 +40,7 @@ $(document).ready(function(){
 
 
 
-
+<!--
 <div id="changeThis">
   <h3>Im Dinga</h3>
   </br>
@@ -49,7 +48,6 @@ $(document).ready(function(){
   <button class="btn btn-dark">Click</button>
 
 </div>
-
 
 <script>
 
@@ -66,3 +64,4 @@ $(document).ready(function(){
 });
 
 </script>
+-->
